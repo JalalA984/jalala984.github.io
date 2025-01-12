@@ -1,0 +1,138 @@
+/* Reset and Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    font-size: 16px;
+    font-family: Poppins, sans-serif;
+    overflow: hidden !important;
+    background: #E4E4E4;
+}
+
+section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.white,
+.black {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    padding: 10px;
+}
+
+.white {
+    background-color: white;
+    color: black;
+}
+
+.black {
+    background-color: black;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Pointer styles */
+.pointer {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1000;
+    mix-blend-mode: difference;  /* Masking effect */
+    transition: transform 0.1s ease-out; /* Smooth transition */
+    animation: moveAround 5s infinite alternate ease-in-out;  /* Default animation */
+}
+
+/* Smooth movement animation */
+@keyframes moveAround {
+    0% {
+        transform: translate(0, 0);  /* Starting point */
+    }
+    25% {
+        transform: translate(50px, -50px);  /* Move up and right */
+    }
+    50% {
+        transform: translate(-50px, 50px);  /* Move down and left */
+    }
+    75% {
+        transform: translate(50px, 50px);  /* Move down and right */
+    }
+    100% {
+        transform: translate(-50px, -50px);  /* Move up and left */
+    }
+}
+
+/* Disable animation on mouse move */
+.pointer.no-animation {
+    animation: none;
+}
+
+/* Button Styles */
+.btn-container {
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+}
+
+.btn {
+    background: rgba(255, 255, 255, 0.1); /* Transparent white background */
+    color: #757575;  /* Dark gray text */
+    padding: 12px 24px; /* Smaller padding */
+    text-decoration: none;
+    border-radius: 8px; /* Rounded corners */
+    font-size: 16px;  /* Smaller font size */
+    font-weight: 600;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px); /* Glass blur effect */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border for contrast */
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect */
+.btn:hover {
+    background: rgba(255, 255, 255, 0.2); /* Lighter background on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+    .btn {
+        font-size: 14px;
+        padding: 10px 20px; /* Adjust button padding */
+    }
+
+    .btn-container {
+        bottom: 10px; /* Adjust button position on mobile */
+    }
+}
+
+/* Media Query for Extra Small Mobile Devices */
+@media (max-width: 480px) {
+    .btn {
+        font-size: 12px;
+        padding: 8px 15px; /* Smaller padding */
+    }
+}
